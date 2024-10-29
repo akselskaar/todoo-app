@@ -1,6 +1,6 @@
 # Todoo-app
 
-Todoo-app made in next.js 15, with Posgress database and Drizzle ORM.
+Todoo-app made in next.js 15, with postgres database and Drizzle ORM.
 
 ## Setup:
 
@@ -13,11 +13,11 @@ pnpm install
 2. Add .env.local file to root of project with:
 
 ```
-DATABASE_URL='postgres://myuser:mypassword@127.0.0.1:5432/task-manager-db'
+DATABASE_URL='postgres://myuser:mypassword@127.0.0.1:5432/todoo-app-db'
 NEXTAUTH_SECRET=
 ```
 
-3. Generate NEXTAUTH_SECRET and paste the generated secret to .env.local:
+To generate NEXTAUTH_SECRET:
 
 ```
 openssl rand -base64 32 | pbcopy
@@ -29,13 +29,13 @@ openssl rand -base64 32 | pbcopy
 docker compose up -d
 ```
 
-5. Push schemas to database:
+4. Push schemas to database:
 
 ```
 pnpm push
 ```
 
-6. Start dev server:
+5. Start dev server:
 
 ```
 pnpm dev
@@ -47,14 +47,14 @@ pnpm dev
 - Auth.js
 - TypeScript
 - Tailwind CSS
-- Postgress
+- Postgres
 - Drizzle ORM
 - Docker
 - Shadcn/ui
 
 ## :page_facing_up: Resources
 
-- [Github repo](https://github.com/akselskaar/task-manager)
+- [Github repo](https://github.com/akselskaar/todoo-app)
 - [Next docs](https://nextjs.org/docs)
 - [Drizzle docs](https://orm.drizzle.team/docs/overview)
 - [Auth.js docs](https://authjs.dev/getting-started)
