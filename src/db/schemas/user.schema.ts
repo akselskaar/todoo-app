@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm'
 import {
   boolean,
   timestamp,
@@ -7,6 +8,7 @@ import {
   integer,
 } from 'drizzle-orm/pg-core'
 import type { AdapterAccountType } from 'next-auth/adapters'
+import { task } from './task.schema'
 
 export const users = pgTable('user', {
   id: text('id')
@@ -17,6 +19,10 @@ export const users = pgTable('user', {
   emailVerified: timestamp('emailVerified', { mode: 'date' }),
   image: text('image'),
 })
+
+export const userRelations = relations(users, ({ many }) => ({
+  tasks: many(task),
+}))
 
 export const accounts = pgTable(
   'account',
