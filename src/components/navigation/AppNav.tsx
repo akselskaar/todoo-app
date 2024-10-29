@@ -11,7 +11,7 @@ const AppNav = async () => {
   return (
     <nav className='flex justify-between items-center px-6 py-4 bg-pink-200'>
       <h1>Todoo app</h1>
-      <UserAvatar name={session.user.name} />
+      <UserAvatar name={session.user.name} image={session.user.image} />
     </nav>
   )
 }
