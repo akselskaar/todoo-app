@@ -1,6 +1,6 @@
-# Task manager
+# Todoo-app
 
-Task manager made in next.js 15, with Posgress database and Drizzle ORM.
+Todoo-app made in next.js 15, with Posgress database and Drizzle ORM.
 
 ## Setup:
 
