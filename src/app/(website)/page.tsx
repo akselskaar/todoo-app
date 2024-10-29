@@ -1,3 +1,6 @@
+import { Button } from '@/components'
+import Link from 'next/link'
+
 const HomePage = async () => {
   return (
     <main className='p-6'>
@@ -9,7 +12,9 @@ const HomePage = async () => {
           Use this amazing app to get control over your life. It will make your
           life much better.
         </p>
-        <button className='w-full'>Registrer</button>
+        <Link href='/api/auth/signin?callbackUrl=/tasks'>
+          <Button className='w-full'>Registrer</Button>
+        </Link>
       </header>
     </main>
   )
