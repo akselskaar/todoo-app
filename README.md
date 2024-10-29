@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task manager
 
-## Getting Started
+Task manager made in next.js 15, with Posgress database and Drizzle ORM.
 
-First, run the development server:
+## Setup:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Install deps:
+
+```
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Add .env.local file to root of project with:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+DATABASE_URL='postgres://myuser:mypassword@127.0.0.1:5432/task-manager-db'
+NEXTAUTH_SECRET=
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Generate NEXTAUTH_SECRET and paste the generated secret to .env.local:
 
-## Learn More
+```
+openssl rand -base64 32 | pbcopy
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. Start the database:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+docker compose up -d
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Push schemas to database:
 
-## Deploy on Vercel
+```
+pnpm push
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. Start dev server:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+pnpm dev
+```
+
+## :sparkles: Tech stack
+
+- Next.js 15
+- Auth.js
+- TypeScript
+- Tailwind CSS
+- Postgress
+- Drizzle ORM
+- Docker
+- Shadcn/ui
+
+## :page_facing_up: Resources
+
+- [Github repo](https://github.com/akselskaar/task-manager)
+- [Next docs](https://nextjs.org/docs)
+- [Drizzle docs](https://orm.drizzle.team/docs/overview)
+- [Auth.js docs](https://authjs.dev/getting-started)
+- [Tailwind docs](https://tailwindcss.com/)
+- [Chadcn/ui website](https://ui.shadcn.com/)
+
+<hr />
+
+Copyright :copyright: [Aksel Skaar](https://github.com/akselskaar)
