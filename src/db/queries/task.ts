@@ -13,7 +13,6 @@ export const dbGetTasksByUser = async (idUser: string): Promise<Task[]> => {
 }
 
 export const dbInsertNewTask = async (newTask: AddTaskZodSchema) => {
-  console.log('newTask from qr: ', newTask)
   const insertedTask = await db
     .insert(task)
     .values(newTask)
