@@ -14,25 +14,72 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
+    /* Primitive colors */
+    --primary-1: #edeaea;
+    --primary-2: #ece3e4;
+    --primary-3: #ecd5d8;
+    --primary-4: #f3c3ca;
+    --primary-5: #f0b3bc;
+    --primary-6: #eaa1ac;
+    --primary-7: #e08b99;
+    --primary-8: #d66f82;
+    --primary-9: #ad4a5f;
+    --primary-10: #9d3c52;
+    --primary-11: #97364d;
+    --primary-12: #690829;
+
+    --primary-a1: #ca5d1607;
+    --primary-a2: #c717050d;
+    --primary-a3: #dc020e1b;
+    --primary-a4: #ff5c6f4b;
+    --primary-a5: #ff00001e;
+    --primary-a6: #e1012053;
+    --primary-a7: #cd03216b;
+    --primary-a8: #c2022489;
+    --primary-a9: #90001eb0;
+    --primary-a10: #82001ebf;
+    --primary-a11: #7e011ec6;
+    --primary-a12: #650122f7;
+
+    --gray-1: #fdfcfd;
+    --gray-2: #faf9fb;
+    --gray-3: #f2eff3;
+    --gray-4: #eae7ec;
+    --gray-5: #e3dfe6;
+    --gray-6: #dbd8e0;
+    --gray-7: #d0cdd7;
+    --gray-8: #bcbac7;
+    --gray-9: #8e8c99;
+    --gray-10: #84828e;
+    --gray-11: #65636d;
+    --gray-12: #211f26;
+
+    --gray-a1: #55005503;
+    --gray-a2: #2b005506;
+    --gray-a3: #30004010;
+    --gray-a4: #20003618;
+    --gray-a5: #20003820;
+    --gray-a6: #14003527;
+    --gray-a7: #10003332;
+    --gray-a8: #08003145;
+    --gray-a9: #05001d73;
+    --gray-a10: #0500197d;
+    --gray-a11: #0400119c;
+    --gray-a12: #020008e0;
+
+    /* Primitive variables */
+    --white-contrast: #000000;
+    --black-contrast: #ffffff;
+    --white-to-dark: #ffffff;
+    --dark-to-white: #000000;
+    --overlay: #08003145;
+    --panel: #ffffffcc;
+
+    /* Variables used by chad/cn */
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
+    --destructive-foreground: 0 0% 98%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -41,25 +88,73 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
+    /* Primitive colors */
+    --primary-1: #1a0d0f;
+    --primary-2: #241013;
+    --primary-3: #470016;
+    --primary-4: #5a001d;
+    --primary-5: #680227;
+    --primary-6: #781834;
+    --primary-7: #8e2e46;
+    --primary-8: #ad4a5f;
+    --primary-9: #ffb5c0;
+    --primary-10: #f4abb6;
+    --primary-11: #ff94a7;
+    --primary-12: #ffcbd4;
+
+    --primary-a1: #f5000009;
+    --primary-a2: #f8051314;
+    --primary-a3: #fc00203a;
+    --primary-a4: #fe00344e;
+    --primary-a5: #fe004a5d;
+    --primary-a6: #ff21606e;
+    --primary-a7: #fe497586;
+    --primary-a8: #ff6887a7;
+    --primary-a9: #ffb5c0;
+    --primary-a10: #feb2bdf4;
+    --primary-a11: #ff94a7;
+    --primary-a12: #ffcbd4;
+
+    --gray-1: #121113;
+    --gray-2: #1a191b;
+    --gray-3: #232225;
+    --gray-4: #2b292d;
+    --gray-5: #323035;
+    --gray-6: #3c393f;
+    --gray-7: #49474e;
+    --gray-8: #625f69;
+    --gray-9: #6f6d78;
+    --gray-10: #7c7a85;
+    --gray-11: #b5b2bc;
+    --gray-12: #eeeef0;
+
+    --gray-a1: #00000000;
+    --gray-a2: #f5f4f609;
+    --gray-a3: #ebeaf814;
+    --gray-a4: #eee5f81d;
+    --gray-a5: #efe6fe25;
+    --gray-a6: #f1e6fd30;
+    --gray-a7: #eee9ff40;
+    --gray-a8: #eee7ff5d;
+    --gray-a9: #eae6fd6e;
+    --gray-a10: #ece9fd7c;
+    --gray-a11: #f5f1ffb7;
+    --gray-a12: #fdfdffef;
+
+    /* Primitive variables */
+    --white-contrast: #000000;
+    --black-contrast: #ffffff;
+    --white-to-dark: #000000;
+    --dark-to-white: #ffffff;
+    --overlay: #000000bf;
+    --panel: #191919b2;
+    --surface: #000000;
+
+    /* Variables used by chad/cn */
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
+    --destructive-foreground: 0 0% 98%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
