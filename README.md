@@ -4,17 +4,19 @@ Todoo-app made in next.js 15, with postgres database and Drizzle ORM.
 
 ## Setup:
 
-1. Install deps:
+Install deps:
 
 ```
 pnpm install
 ```
 
-2. Add .env.local file to root of project with:
+Add `.env.local` file to root of project with:
 
 ```
 DATABASE_URL='postgres://myuser:mypassword@127.0.0.1:5432/todoo-app-db'
 NEXTAUTH_SECRET=
+AUTH_GITHUB_ID=
+AUTH_GITHUB_SECRET=
 ```
 
 To generate NEXTAUTH_SECRET:
@@ -23,19 +25,22 @@ To generate NEXTAUTH_SECRET:
 openssl rand -base64 32 | pbcopy
 ```
 
-3. Start the database:
+Create a new oAuth app in your GitHub settings and paste your secrets to the .env.local
+
+Start the database:
 
 ```
 docker compose up -d
 ```
 
-4. Push schemas to database:
+Push schemas to database:
 
 ```
+pnpm generate
 pnpm push
 ```
 
-5. Start dev server:
+Start dev server:
 
 ```
 pnpm dev
