@@ -6,7 +6,7 @@ type BadgeProps = {
 }
 
 const variants = {
-  neutral: 'bg-gray-50',
+  neutral: 'bg-gray-a3 text-gray-a11',
   warning: 'bg-yellow-200 text-yellow-900',
   danger: 'bg-red-200 text-red-900',
 }

@@ -22,7 +22,7 @@ const TaskCard = ({ data, index }: TaskCardProps) => {
   }
   const increment = index + 1
   return (
-    <li className='border border-border rounded-md'>
+    <li className='border border-border rounded-md bg-panel'>
       <div className='p-3 border-b border-border flex justify-between'>
         <span className='flex items-center gap-2 text-md font-bold'>
           <span>#{increment}</span>

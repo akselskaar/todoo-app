@@ -13,7 +13,7 @@ const TasksPage = async () => {
 
   const data = await getTasksByUserAction(session.user.id!)
   return (
-    <main className='p-6'>
+    <>
       <header className='flex justify-between items-center mb-4'>
         <h1 className='text-lg font-bold'>Your tasks</h1>
         <AddTaskForm idUser={session.user.id!} />
@@ -29,7 +29,7 @@ const TasksPage = async () => {
           <p>You have no tasks</p>
         )}
       </section>
-    </main>
+    </>
   )
 }
 export default TasksPage
