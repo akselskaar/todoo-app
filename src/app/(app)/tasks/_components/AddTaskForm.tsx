@@ -85,6 +85,7 @@ const AddTaskForm = ({ idUser }: AddTaskFormProps) => {
           <FormDatePicker
             label='Deadline'
             name='deadline'
+            placeholder='Pick a date'
             disablePast
             control={form.control as unknown as Control<FieldValues>}
           />

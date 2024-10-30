@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { format, intervalToDuration } from 'date-fns'
-import { nb } from 'date-fns/locale'
+import { enGB } from 'date-fns/locale'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const formatDate = (date: Date | null): string | null => {
   if (!date) return null
-  return format(date, 'd MMMM, yyyy', { locale: nb })
+  return format(date, 'd MMMM, yyyy', { locale: enGB })
 }
 
 export const getDayDateDuration = (date: Date | null): number | undefined => {

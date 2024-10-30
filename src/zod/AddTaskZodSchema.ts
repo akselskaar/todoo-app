@@ -4,20 +4,20 @@ import { z } from 'zod'
 export const addTaskZodSchema = z.object({
   idUser: z
     .string({
-      required_error: 'Det oppstod et problem med å verdifisere brukeren din.',
+      required_error: 'There was an error with the user ID. Please try again.',
     })
     .uuid(),
   title: z
-    .string({ required_error: 'Du må skrive en tittel for oppgaven.' })
-    .min(2, 'Tittelen må være minst 2 tegn lang.')
-    .max(40, 'Tittelen kan ikke være lengre enn 40 tegn.')
+    .string({ required_error: 'Title is required' })
+    .min(2, 'Title must be at least 2 characters long.')
+    .max(40, 'Title cannot be longer than 40 characters.')
     .trim(),
   priority: z.nativeEnum(PriorityType).default(PriorityType.Medium),
   deadline: z.date().optional(),
   description: z
     .string()
-    .min(2, 'Beskrivelsen må være minst 2 tegn lang.')
-    .max(200, 'Beskrivelsen kan ikke være lengre enn 200 tegn.')
+    .min(2, 'The description must be at least 2 characters long.')
+    .max(200, 'The description cannot be longer than 200 characters.')
     .optional(),
 })
 
