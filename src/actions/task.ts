@@ -3,7 +3,9 @@
 import { AddTaskZodSchema, addTaskZodSchema } from '@/zod/AddTaskZodSchema'
 import { revalidatePath } from 'next/cache'
 import { dbGetTasksByUser, dbInsertNewTask } from '@/db/queries'
-import { Task } from '@/db/schemas'
+import { task, Task } from '@/db/schemas'
+import { db } from '@/db'
+import { eq } from 'drizzle-orm'
 
 export const getTasksByUserAction = async (idUser: string): Promise<Task[]> => {
   try {
@@ -42,4 +44,17 @@ export const addNewTaskAction = async (
         'An error occurred on the server while trying to add a new task.',
     }
   }
+}
+
+export const toggleTaskCompleted = async (id: string) => {
+  const taskToUpdate = await db.query.task.findFirst({
+    where: (task, { eq }) => eq(task.id, id),
+  })
+
+  const updated = await db
+    .update(task)
+    .set({ isCompleted: !taskToUpdate!.isCompleted })
+    .where(eq(task.id, id))
+
+  return updated
 }

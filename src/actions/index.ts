@@ -1,1 +1,5 @@
-export { getTasksByUserAction, addNewTaskAction } from './task'
+export {
+  getTasksByUserAction,
+  addNewTaskAction,
+  toggleTaskCompleted,
+} from './task'

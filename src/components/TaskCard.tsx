@@ -5,6 +5,8 @@ import { DotsVerticalIcon, CalendarIcon } from '@radix-ui/react-icons'
 import { Button, DeadlineBadge } from '@/components'
 import { getDayDateDuration } from '@/lib/utils'
 import { Checkbox } from './ui/checkbox'
+import { useState } from 'react'
+import { toggleTaskCompleted } from '@/actions'
 
 type TaskCardProps = {
   data: Task
@@ -12,6 +14,12 @@ type TaskCardProps = {
 }
 
 const TaskCard = ({ data, index }: TaskCardProps) => {
+  const [isCompleted, setIsCompleted] = useState(data.isCompleted)
+
+  const onCheck = () => {
+    setIsCompleted(!isCompleted)
+    toggleTaskCompleted(data.id)
+  }
   const increment = index + 1
   return (
     <li className='border border-border rounded-md'>
@@ -32,7 +40,11 @@ const TaskCard = ({ data, index }: TaskCardProps) => {
             days={getDayDateDuration(data.deadline)}
           />
         </div>
-        <Checkbox className='size-6'></Checkbox>
+        <Checkbox
+          className='size-6'
+          checked={isCompleted}
+          onCheckedChange={onCheck}
+        ></Checkbox>
       </div>
     </li>
   )
