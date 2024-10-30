@@ -1,21 +1,20 @@
 'use client'
 
-import { Button, FormDialog } from '@/components'
 import {
+  Button,
+  FormDialog,
   Form,
-  FormControl,
   FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+  FormInput,
+  FormDatePicker,
+  FormSelect,
+} from '@/components'
 import { addTaskZodSchema, AddTaskZodSchema } from '@/zod/AddTaskZodSchema'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { Control, FieldValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Input } from '@/components/ui/input'
 import { addNewTaskAction } from '@/actions/task'
+import { PriorityType } from '@/db/schemas'
 
 type AddTaskFormProps = {
   idUser: string
@@ -60,32 +59,34 @@ const AddTaskForm = ({ idUser }: AddTaskFormProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-          <FormField
-            control={form.control}
+          <FormInput
+            label='Title'
             name='title'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Title</FormLabel>
-                <FormControl>
-                  <Input placeholder='Title' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            placeholder=' '
+            control={form.control as unknown as Control<FieldValues>}
           />
 
-          <FormField
-            control={form.control}
+          <FormInput
+            label='Description'
             name='description'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Input placeholder='Desctription..' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            placeholder=' '
+            control={form.control as unknown as Control<FieldValues>}
+          />
+
+          <FormSelect
+            label='Priority'
+            name='priority'
+            options={Object.entries(PriorityType).map(([key, value]) => ({
+              label: key,
+              value,
+            }))}
+            control={form.control as unknown as Control<FieldValues>}
+          />
+
+          <FormDatePicker
+            label='Due date'
+            name='dueDate'
+            control={form.control as unknown as Control<FieldValues>}
           />
 
           {errorMessage && <FormDescription>{errorMessage}</FormDescription>}
