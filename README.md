@@ -1,6 +1,6 @@
 # Todoo-app
 
-Todoo-app made in next.js 15, with postgres database and Drizzle ORM.
+Todoo-app made in next.js 14, with postgres database and Drizzle ORM.
 
 ## Setup:
 
