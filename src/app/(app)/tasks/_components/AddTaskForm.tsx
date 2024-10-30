@@ -26,7 +26,7 @@ const AddTaskForm = ({ idUser }: AddTaskFormProps) => {
 
   const form = useForm<AddTaskZodSchema>({
     resolver: zodResolver(addTaskZodSchema),
-    mode: 'onBlur',
+    mode: 'onSubmit',
     defaultValues: {
       idUser,
       title: '',
@@ -35,7 +35,6 @@ const AddTaskForm = ({ idUser }: AddTaskFormProps) => {
   })
 
   const onSubmit = async (values: AddTaskZodSchema) => {
-    console.log('values: ', values)
     const { success, message } = await addNewTaskAction(values)
 
     if (success) {
@@ -98,10 +97,10 @@ const AddTaskForm = ({ idUser }: AddTaskFormProps) => {
               variant='outline'
               onClick={() => setOpen(false)}
             >
-              Avbryt
+              Cancel
             </Button>
 
-            <Button type='submit'>Lagre</Button>
+            <Button type='submit'>Add task</Button>
           </div>
         </form>
       </Form>
