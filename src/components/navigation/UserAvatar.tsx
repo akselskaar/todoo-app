@@ -4,6 +4,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -37,6 +39,8 @@ const UserAvatar = ({ name, image }: UserAvatarProps) => {
         </>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
+        <DropdownMenuLabel>{name}</DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Link href='/api/auth/signout?callbackUrl=/'>Sign out</Link>
         </DropdownMenuItem>
