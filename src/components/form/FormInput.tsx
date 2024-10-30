@@ -11,7 +11,7 @@ import { Input } from '../ui/input'
 type InputProps = {
   type?: 'text' | 'number'
   name: string
-  lable?: string
+  label?: string
   placeholder?: string
   control: Control<FieldValues> // Pass in as: control={form.control as unknown as Control<FieldValues>}
 }
@@ -19,7 +19,7 @@ type InputProps = {
 const FormInput = ({
   type = 'text',
   name,
-  lable,
+  label,
   placeholder = 'placeholder',
   control,
 }: InputProps) => {
@@ -29,7 +29,7 @@ const FormInput = ({
       name={name}
       render={({ field }) => (
         <FormItem className='w-full'>
-          {lable && <FormLabel>{lable}</FormLabel>}
+          {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
             {type === 'number' ? (
               <Input

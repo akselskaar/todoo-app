@@ -11,7 +11,7 @@ import {
 
 type FormSelectProps = {
   name: string
-  lable?: string
+  label?: string
   placeholder?: string
   options?: SelectOption<string>[]
   control: Control<FieldValues> // Pass in as: control={form.control as unknown as Control<FieldValues>}
@@ -19,7 +19,7 @@ type FormSelectProps = {
 
 const FormSelect = ({
   name,
-  lable = 'Lable',
+  label = 'Label',
   placeholder = 'Velg...',
   options,
   control,
@@ -31,7 +31,7 @@ const FormSelect = ({
         name={name}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{lable}</FormLabel>
+            <FormLabel>{label}</FormLabel>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
                 <SelectTrigger>
