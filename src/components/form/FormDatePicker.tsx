@@ -13,6 +13,8 @@ type FormDatepickerProps = {
   label?: string
   placeholder?: string
   control: Control<FieldValues> // Pass in as: control={form.control as unknown as Control<FieldValues>}
+  disablePast?: boolean
+  disableFuture?: boolean
 }
 
 const FormDatePicker = ({
@@ -20,6 +22,8 @@ const FormDatePicker = ({
   label,
   placeholder = 'placeholder',
   control,
+  disablePast,
+  disableFuture,
 }: FormDatepickerProps) => {
   return (
     <FormField
@@ -51,9 +55,10 @@ const FormDatePicker = ({
               <Calendar
                 mode='single'
                 onSelect={field.onChange}
-                disabled={(date) =>
-                  date > new Date() || date < new Date('1900-01-01')
-                }
+                {...(disablePast && { disabled: (date) => date < new Date() })}
+                {...(disableFuture && {
+                  disabled: (date) => date > new Date(),
+                })}
                 initialFocus
               />
             </PopoverContent>
