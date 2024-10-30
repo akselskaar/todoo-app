@@ -10,3 +10,5 @@ export {
 } from './user.schema'
 
 export { task, taskRelations } from './task.schema'
+
+export type { Task } from './task.schema'

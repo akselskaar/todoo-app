@@ -1,31 +1,35 @@
-import { Button } from '@/components'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
+import AddTaskForm from './_components/AddTaskForm'
+import { getTasksByUserAction } from '@/actions'
+import { TaskCard } from '@/components'
 
-const page = () => {
+const TasksPage = async () => {
+  const session = await auth()
+
+  if (!session?.user) {
+    redirect('/api/auth/signin?callbackUrl=/tasks')
+  }
+
+  const data = await getTasksByUserAction(session.user.id!)
   return (
     <main className='p-6'>
-      <header className='flex justify-between items-center'>
+      <header className='flex justify-between items-center mb-4'>
         <h1 className='text-lg font-bold'>Your tasks</h1>
-        <Button size='sm' variant='outline'>
-          Add new task
-        </Button>
+        <AddTaskForm idUser={session.user.id!} />
       </header>
       <section>
-        <ul>
-          <li>
-            <span>Task 1</span>
-            <input type='checkbox' />
-          </li>
-          <li>
-            <span>Task 2</span>
-            <input type='checkbox' />
-          </li>
-          <li>
-            <span>Task 3</span>
-            <input type='checkbox' />
-          </li>
-        </ul>
+        {data.length > 0 ? (
+          <ul className='space-y-2'>
+            {data.map((task, i) => (
+              <TaskCard key={task.id} index={i} data={task} />
+            ))}
+          </ul>
+        ) : (
+          <p>You have no tasks</p>
+        )}
       </section>
     </main>
   )
 }
-export default page
+export default TasksPage
