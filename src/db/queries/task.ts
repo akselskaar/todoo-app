@@ -7,6 +7,11 @@ import { task, Task } from '@/db/schemas'
 export const dbGetTasksByUser = async (idUser: string): Promise<Task[]> => {
   const res: Task[] = await db.query.task.findMany({
     where: (task, { eq }) => eq(task.idUser, idUser),
+    orderBy: (task, { asc }) => [
+      asc(task.isCompleted),
+      asc(task.deadline),
+      asc(task.createdAt),
+    ],
   })
 
   return res
