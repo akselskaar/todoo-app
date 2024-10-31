@@ -1,5 +1,16 @@
 import type { Config } from 'tailwindcss'
 import tailwindcssAnimate from 'tailwindcss-animate'
+import plugin from 'tailwindcss/plugin'
+
+// Plugin to capitalise first letter of a string
+const capitalizeFirst = plugin(function ({ addUtilities }) {
+  const newUtilities = {
+    '.capitalize-first:first-letter': {
+      textTransform: 'uppercase',
+    },
+  }
+  addUtilities(newUtilities)
+})
 
 const config: Config = {
   darkMode: ['class'],
@@ -122,6 +133,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [tailwindcssAnimate, capitalizeFirst],
 }
 export default config
