@@ -14,8 +14,8 @@ const TasksPage = async () => {
   const data = await getTasksByUserAction(session.user.id!)
   return (
     <>
-      <header className='flex justify-between items-center mb-4'>
-        <h1 className='text-lg font-bold'>Your tasks</h1>
+      <header className='flex justify-between items-center mb-6'>
+        <h1 className='text-2xl font-bold'>Your tasks</h1>
         <AddTaskForm idUser={session.user.id!} />
       </header>
       <section>
