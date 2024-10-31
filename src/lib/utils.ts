@@ -24,3 +24,24 @@ export const getDayDateDuration = (date: Date | null): number | undefined => {
 
   return days
 }
+
+export const getDayDateDurationString = (
+  date: Date | null
+): string | undefined => {
+  const days = getDayDateDuration(date)
+
+  if (days === undefined) return 'No deadline'
+
+  switch (true) {
+    case days === 0:
+      return 'Today'
+    case days === 1:
+      return 'Tomorrow'
+    case days > 1:
+      return `${days} days from now`
+    case days < 0:
+      return `${Math.abs(days)} days ago`
+    default:
+      return `${days} days`
+  }
+}
