@@ -6,7 +6,6 @@ import { auth } from '@/auth'
 
 const AppNav = async () => {
   const session = await auth()
-  console.log('session: ', session)
   return (
     <nav className='fixed w-full bg-primary-a3 border-b border-primary-a6'>
       <div className='pt-4 backdrop-blur-lg'>
