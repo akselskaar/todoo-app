@@ -1,5 +1,6 @@
 export {
   getUncompletedTasksByUserAction,
+  getCompletedTasksByUserAction,
   addNewTaskAction,
   toggleTaskCompleted,
   editTaskAction,

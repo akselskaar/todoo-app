@@ -1,5 +1,6 @@
 export { Button } from './ui/button'
 export { Form, FormDescription } from './ui/form'
+export { DataTable } from './ui/DataTable'
 export { default as WebsiteNav } from './navigation/WebsiteNav'
 export { default as AppNav } from './navigation/AppNav'
 export { default as FormDialog } from './form/FormDialog'

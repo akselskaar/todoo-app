@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache'
 import {
   dbDeleteTask,
   dbEditTask,
+  dbGetCompletedTasksByUser,
   dbGetUncompletedTasksByUser,
   dbInsertNewTask,
 } from '@/db/queries'
@@ -18,6 +19,21 @@ export const getUncompletedTasksByUserAction = async (
 ): Promise<Task[]> => {
   try {
     const res = await dbGetUncompletedTasksByUser(idUser)
+    return res
+  } catch (error) {
+    console.error(
+      'An error occurred on the server while trying to get tasks by user: ',
+      error
+    )
+    return []
+  }
+}
+
+export const getCompletedTasksByUserAction = async (
+  idUser: string
+): Promise<Task[]> => {
+  try {
+    const res = await dbGetCompletedTasksByUser(idUser)
     return res
   } catch (error) {
     console.error(
