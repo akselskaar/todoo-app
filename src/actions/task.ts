@@ -2,14 +2,22 @@
 
 import { AddTaskZodSchema, addTaskZodSchema } from '@/zod/AddTaskZodSchema'
 import { revalidatePath } from 'next/cache'
-import { dbGetTasksByUser, dbInsertNewTask } from '@/db/queries'
+import {
+  dbDeleteTask,
+  dbEditTask,
+  dbGetUncompletedTasksByUser,
+  dbInsertNewTask,
+} from '@/db/queries'
 import { task, Task } from '@/db/schemas'
 import { db } from '@/db'
 import { eq } from 'drizzle-orm'
+import { EditTaskZodSchema, editTaskZodSchema } from '@/zod/EditTaskZodSchema'
 
-export const getTasksByUserAction = async (idUser: string): Promise<Task[]> => {
+export const getUncompletedTasksByUserAction = async (
+  idUser: string
+): Promise<Task[]> => {
   try {
-    const res = await dbGetTasksByUser(idUser)
+    const res = await dbGetUncompletedTasksByUser(idUser)
     return res
   } catch (error) {
     console.error(
@@ -57,4 +65,49 @@ export const toggleTaskCompleted = async (id: string) => {
     .where(eq(task.id, id))
 
   return updated
+}
+
+export const editTaskAction = async (
+  values: EditTaskZodSchema
+): Promise<APResponse> => {
+  const validated = editTaskZodSchema.parse(values)
+  try {
+    const res = await dbEditTask(validated)
+    revalidatePath('/tasks')
+    return {
+      success: true,
+      message: 'The task was updated successfully',
+      id: res.id,
+    }
+  } catch (error) {
+    console.error(
+      'An error occured on the server when trying to update task: ',
+      error
+    )
+    return {
+      success: false,
+      message: 'An error occured on the server when trying to update the task.',
+    }
+  }
+}
+
+export const deleteTaskAction = async (id: string): Promise<APResponse> => {
+  try {
+    const res = await dbDeleteTask(id)
+    revalidatePath('/tasks')
+    return {
+      success: true,
+      message: 'The task was deleted successfully',
+      id: res.id,
+    }
+  } catch (error) {
+    console.error(
+      'An error occurred on the server when trying to delete task: ',
+      error
+    )
+    return {
+      success: false,
+      message: 'An error occurred on the server when trying to delete task.',
+    }
+  }
 }

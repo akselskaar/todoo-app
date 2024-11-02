@@ -1,5 +1,7 @@
 export {
-  getTasksByUserAction,
+  getUncompletedTasksByUserAction,
   addNewTaskAction,
   toggleTaskCompleted,
+  editTaskAction,
+  deleteTaskAction,
 } from './task'

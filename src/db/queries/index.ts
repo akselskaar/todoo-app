@@ -1,1 +1,7 @@
-export { dbGetTasksByUser, dbInsertNewTask } from './task'
+export {
+  dbGetUncompletedTasksByUser,
+  dbGetCompletedTasksByUser,
+  dbInsertNewTask,
+  dbEditTask,
+  dbDeleteTask,
+} from './task'

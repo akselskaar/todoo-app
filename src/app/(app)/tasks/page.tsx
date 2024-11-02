@@ -1,7 +1,7 @@
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import AddTaskForm from './_components/AddTaskForm'
-import { getTasksByUserAction } from '@/actions'
+import { getUncompletedTasksByUserAction } from '@/actions'
 import { TaskCard } from '@/components'
 
 const TasksPage = async () => {
@@ -11,7 +11,7 @@ const TasksPage = async () => {
     redirect('/api/auth/signin?callbackUrl=/tasks')
   }
 
-  const data = await getTasksByUserAction(session.user.id!)
+  const data = await getUncompletedTasksByUserAction(session.user.id!)
   return (
     <>
       <header className='flex justify-between items-center mb-6'>
